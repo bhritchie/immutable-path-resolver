@@ -26,6 +26,8 @@ Suppose you have a tree of immutable objects like this:
 
 Then you can use that path with ImmutableJS methods such as `getIn`, `setIn`, etc.
 
+[![Build Status](https://travis-ci.org/bhritchie/immutable-path-resolver.svg?branch=master)](https://travis-ci.org/bhritchie/immutable-path-resolver)
+
 ## Installation
 
     npm install immutable-path-resolver
