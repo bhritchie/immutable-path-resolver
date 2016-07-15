@@ -1,0 +1,30 @@
+{
+  "name": "immutable-path-resolver",
+  "version": "0.1.0",
+  "description": "Dynamically resolve paths through ImmutableJS data structures",
+  "main": "immutable-path-resolver.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bhritchie/immutable-path-resolver/"
+  },
+  "keywords": [
+    "immutable",
+    "immutablejs",
+    "dynamic",
+    "resolve",
+    "path",
+    "hasIn",
+    "function"
+  ],
+  "author": "Brendan Ritchie",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-counting": "^1.0.0",
+    "immutable": "^3.8.1",
+    "mocha": "^2.5.3"
+  }
+}
