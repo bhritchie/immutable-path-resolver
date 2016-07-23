@@ -2,9 +2,10 @@
   "name": "immutable-path-resolver",
   "version": "0.1.0",
   "description": "Dynamically resolve paths through ImmutableJS data structures",
-  "main": "immutable-path-resolver.js",
+  "main": "lib/immutable-path-resolver.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "build": "babel src -d lib"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,8 @@
   "author": "Brendan Ritchie",
   "license": "ISC",
   "devDependencies": {
+    "babel-cli": "^6.11.4",
+    "babel-preset-es2015": "^6.9.0",
     "chai": "^3.5.0",
     "chai-counting": "^1.0.0",
     "immutable": "^3.8.1",

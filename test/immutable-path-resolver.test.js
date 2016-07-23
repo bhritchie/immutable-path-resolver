@@ -1,6 +1,6 @@
 'use strict';
 
-const resolvePath = require('../immutable-path-resolver');
+const resolvePath = require('../lib/immutable-path-resolver');
 const Immutable = require('immutable');
 const Map = Immutable.Map;
 const List = Immutable.List;

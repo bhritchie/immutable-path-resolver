@@ -1,7 +1,4 @@
-'use strict';
-
-module.exports = function resolve (state, pathSpec, p) {
-    const path = p || [];
+module.exports = function resolve (state, pathSpec, path=[]) {
     if (!state.hasIn(path)) {
         return null;
     } else if (!pathSpec.length) {
