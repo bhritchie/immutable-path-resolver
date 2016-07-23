@@ -4,6 +4,10 @@
 
 Suppose you have a tree of immutable objects like this:
 
+    const {Map, List, Record} = require('immutable');
+
+    class Todo extends Record({id: null, label: ''}) {};
+
     const state = new Map({
         todos: new List([
             new Todo({id: 1, label: 'utility'}),
