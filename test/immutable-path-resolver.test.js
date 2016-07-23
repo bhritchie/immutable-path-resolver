@@ -11,7 +11,7 @@ const expect = chai.expect;
 class Todo extends Record({
     id:    null,
     label: '',
-}) {}
+}) {};
 
 const state = new Map({
     data: new Map({
@@ -54,8 +54,7 @@ describe('immutable-path-resolver', function () {
     });
 
     it('should return full path when dynamic path specification has function in first position', () => {
-        // Not supported yet but should do
-        const path = resolvePath(state, [() => 'data', 'todos', 0, 'label']);
+        const path = resolvePath(state, [(state) => state.keys().next().value, 'todos', 0, 'label']);
         expect(path).to.deep.equal(['data', 'todos', 0, 'label']);
         expect(state.getIn(path)).to.be.eq('utility');
     });
