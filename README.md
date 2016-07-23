@@ -38,6 +38,5 @@ Then you can use that path with ImmutableJS methods such as `getIn`, `setIn`, et
 
 ## Usage Notes
 
-- When you provide a function at some point in your path specification, that function will be invoked with the value of the preceding item in the tree.
-- There is currently no support for a function as the first item in the path specification. Hopefully there will be soon.
+- When you provide a function at some point in your path specification, that function will be invoked with the value of the preceding item in the tree, or the initial object when the function is in the first position.
 - This utility has only been tested with the `Map`, `List`, and `Record` data types.
