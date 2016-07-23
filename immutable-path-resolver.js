@@ -1,6 +1,7 @@
 'use strict';
 
-const helper = (state, pathSpec, path) => {
+module.exports = function resolve (state, pathSpec, p) {
+    const path = p || [];
     if (!state.hasIn(path)) {
         return null;
     } else if (!pathSpec.length) {
@@ -15,12 +16,6 @@ const helper = (state, pathSpec, path) => {
         } else {
             path.push(pathSpec.shift());
         }
-        return helper(state, pathSpec, path);
+        return resolve(state, pathSpec, path);
     }
-};
-
-module.exports = (state, pathSpec) => {
-    const initialPath = [];
-    initialPath.push(pathSpec.shift());
-    return (helper(state, pathSpec, initialPath));
 };

@@ -14,41 +14,61 @@ class Todo extends Record({
 }) {}
 
 const state = new Map({
-    todos: new List([
-        new Todo({id: 1, label: 'utility'}),
-        new Todo({id: 2, label: 'tests'})
-    ]),
+    data: new Map({
+        todos: new List([
+            new Todo({id: 1, label: 'utility'}),
+            new Todo({id: 2, label: 'tests'})
+        ]),
+    }),
 });
 
 describe('immutable-path-resolver', function () {
     it('should return full path when path specification is precise', () => {
-        const path = resolvePath(state, ['todos', 0, 'label']);
-        expect(path).to.deep.equal(['todos', 0, 'label']);
+        const path = resolvePath(state, ['data', 'todos', 0, 'label']);
+        expect(path).to.deep.equal(['data', 'todos', 0, 'label']);
         expect(state.getIn(path)).to.be.eq('utility');
     });
 
     it('should return full path when path specification is dynamic', () => {
-        const path = resolvePath(state, ['todos', (todos => todos.findIndex(t => t.id === 1)), 'label']);
-        expect(path).to.deep.equal(['todos', 0, 'label']);
+        const path = resolvePath(state, ['data', 'todos', (todos => todos.findIndex(t => t.id === 1)), 'label']);
+        expect(path).to.deep.equal(['data', 'todos', 0, 'label']);
         expect(state.getIn(path)).to.be.eq('utility');
     });
 
-    it.skip('should return full path when dynamic path specification starts with a function', () => {
+    it('should work when function is used against Map', () => {
+        const path = resolvePath(state, ['data', () => 'todos', 0, 'label']);
+        expect(path).to.deep.equal(['data', 'todos', 0, 'label']);
+        expect(state.getIn(path)).to.be.eq('utility');
+    });
+
+    it('should work when function is used against List', () => {
+        const path = resolvePath(state, ['data', 'todos', (todos => todos.findIndex(t => t.id === 1)), 'label']);
+        expect(path).to.deep.equal(['data', 'todos', 0, 'label']);
+        expect(state.getIn(path)).to.be.eq('utility');
+    });
+
+    it('should work when function is used against Record', () => {
+        const path = resolvePath(state, ['data', 'todos', 0, () => 'label']);
+        expect(path).to.deep.equal(['data', 'todos', 0, 'label']);
+        expect(state.getIn(path)).to.be.eq('utility');
+    });
+
+    it('should return full path when dynamic path specification has function in first position', () => {
         // Not supported yet but should do
-        const path = resolvePath(state, [(state) => 'todos', (todos => todos.findIndex(t => t.id === 1)), 'label']);
-        expect(path).to.deep.equal(['todos', 0, 'label']);
+        const path = resolvePath(state, [() => 'data', 'todos', 0, 'label']);
+        expect(path).to.deep.equal(['data', 'todos', 0, 'label']);
         expect(state.getIn(path)).to.be.eq('utility');
     });
 
     it('should return null when specified path cannot be resolved I', () => {
-        expect(resolvePath(state, ['todonts', (todos => todos.findIndex(t => t.id === 1)), 'label'])).to.be.null;
+        expect(resolvePath(state, ['data', 'todonts', (todos => todos.findIndex(t => t.id === 1)), 'label'])).to.be.null;
     });
 
     it('should return null when specified path cannot be resolved II', () => {
-        expect(resolvePath(state, ['todos', (todos => todos.findIndex(t => t.id === 4)), 'label'])).to.be.null;
+        expect(resolvePath(state, ['data', 'todos', (todos => todos.findIndex(t => t.id === 4)), 'label'])).to.be.null;
     });
 
     it('should return null when specified path cannot be resolved III', () => {
-        expect(resolvePath(state, ['todos', (todos => todos.findIndex(t => t.id === 1)), 'jabberwock'])).to.be.null;
+        expect(resolvePath(state, ['data', 'todos', (todos => todos.findIndex(t => t.id === 1)), 'jabberwock'])).to.be.null;
     });
 });
