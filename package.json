@@ -1,6 +1,6 @@
 {
   "name": "immutable-path-resolver",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Dynamically resolve paths through ImmutableJS data structures",
   "main": "lib/immutable-path-resolver.js",
   "scripts": {
