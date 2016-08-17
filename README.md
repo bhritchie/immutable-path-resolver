@@ -30,7 +30,7 @@ Suppose you have a tree of immutable objects like this:
 
 Then you can use that path with ImmutableJS methods such as `getIn`, `setIn`, etc.
 
-[![Build Status](https://travis-ci.org/bhritchie/immutable-path-resolver.svg?branch=master)](https://travis-ci.org/bhritchie/immutable-path-resolver)
+[![Build Status](https://travis-ci.org/bhritchie/immutable-path-resolver.svg?branch=master)](https://travis-ci.org/bhritchie/immutable-path-resolver) [![npm](https://img.shields.io/npm/dt/immutable-path-resolver.svg)](https://www.npmjs.com/package/immutable-path-resolver)
 
 ## Installation
 
